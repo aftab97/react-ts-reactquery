@@ -16,7 +16,9 @@ import { PokemonInterface } from "../Types/PokemonInterface";
 */
 
 const fetchData = async (): Promise<PokemonInterface> => {
-  return axios.get("https://pokeapi.co/api/v2/berry/").then((res) => res.data);
+  return await axios
+    .get("https://pokeapi.co/api/v2/berry/")
+    .then((res) => res.data);
 };
 export const useTodos = () =>
   useQuery<PokemonInterface, Error>(["getPokemons"], fetchData);
